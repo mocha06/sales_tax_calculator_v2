@@ -32,6 +32,7 @@ RSpec.describe Item do
       expected_exempted_items.each do |name|
         it "marks '#{name}' as tax-exempt for '#{name}'" do
           item = Item.new(name, 12.49, 2)
+
           expect(item.tax_exempt?).to be true
         end
       end
@@ -43,6 +44,7 @@ RSpec.describe Item do
       non_exempted_items.each do |name|
         it "does not mark '#{name}' as tax-exempt" do
           item = Item.new(name, 10.0, 1)
+
           expect(item.tax_exempt?).to be false
         end
       end
