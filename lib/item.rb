@@ -1,3 +1,6 @@
+require_relative 'tax_exemption_checker'
+require_relative 'tax_calculator'
+
 class Item
   attr_reader :name, :price, :quantity, :imported
 
@@ -17,19 +20,5 @@ class Item
 
   def calculate_tax
     TaxCalculator.calculate(self)
-  end
-end
-
-class TaxExemptionChecker
-  EXEMPT_ITEMS = ['book', 'chocolate', 'headache pills', 'pills']
-
-  def self.tax_exempt?(item_name)
-    EXEMPT_ITEMS.any? { |exempt_item| item_name.downcase.include? exempt_item }
-  end
-end
-
-
-class TaxCalculator
-  def self.calculate(item)
   end
 end
