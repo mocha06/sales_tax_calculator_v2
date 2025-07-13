@@ -1,4 +1,5 @@
 class TaxExemptionChecker
+  # TODO: not a class, but a module
   EXEMPT_ITEMS = ['book', 'chocolate', 'headache pills', 'pills']
 
   def self.tax_exempt?(item_name)
