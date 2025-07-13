@@ -78,9 +78,11 @@ rspec --format documentation --color
 
 ## Usage
 
+Unfortunately due to time constraints, the main application was not implemented. You can see the missing To-Dos [here](#todo)
+
 ### Command Line Interface
 
-The application supports CLI input for individual items:
+The application it's finished state was meant to support CLI input for individual items:
 
 ```bash
 ruby main.rb
@@ -188,7 +190,7 @@ This project demonstrates:
 - ✅ **TaxCalculator** - Complete with proper rounding
 - ✅ **TaxExemptionChecker** - Complete with keyword matching
 - ✅ **Receipt class** - Basic implementation working, needs refactoring
-- ❌ **InputParser** - Not yet implemented
+- ❌ **InputParser** - Started, but not completed
 - ❌ **CLI Interface** - Not yet implemented
 - ❌ **Main application** - Not yet implemented
 
@@ -227,5 +229,4 @@ Of course I'd use more AI in day-to-day work, and of course I'd obviously move f
 I'd like to finish this project, so I'll create a new repo with this project in it's current state, and will evolve it so that it's actually finished. I'll probably take around 3-4 more hours if I don't use AI.
 
 THANK YOU!
-
 
