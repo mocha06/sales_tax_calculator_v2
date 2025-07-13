@@ -20,7 +20,7 @@ class InputParser
     Item.new(name, price, quantity)
   end
 
-  def self.parse_multiple;end
+  def self.parse_multiple;end # TODO: implement this
 
   private
 

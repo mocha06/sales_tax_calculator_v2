@@ -35,6 +35,6 @@ RSpec.describe InputParser do
   end
   
   describe '.parse_multiple' do
-
+    # TODO: add tests
   end
 end
