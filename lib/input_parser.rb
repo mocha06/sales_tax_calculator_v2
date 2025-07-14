@@ -5,8 +5,8 @@ require_relative 'item'
 class InputParser
   INPUT_SEPARATOR = ' at '.freeze
 
-  def self.parse(input_line)
-    parts = input_line.strip.split(INPUT_SEPARATOR)
+  def self.parse_to_item(singular_item_input)
+    parts = singular_item_input.strip.split(INPUT_SEPARATOR)
 
     return nil if parts.length != 2
 
