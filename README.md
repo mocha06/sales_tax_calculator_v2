@@ -1,6 +1,8 @@
 # Sales Tax Calculator
 
-A Ruby application that calculates sales tax and generates receipts for shopping baskets. This (unfinished) project demonstrates object-oriented design principles and clean code practices. The challenge and it's rules can be found [here](challenge.md). 
+A Ruby application that calculates sales tax and generates receipts for shopping baskets. This project demonstrates object-oriented design principles and clean code practices. The challenge and its rules can be found [here](challenge.md).
+
+*Note:* This is the finished project, forked from [this repo](https://github.com/mocha06/sales_tax_calculator), which I also created, but since I was on a time limit of 4 hours, I was unable to finish. To preserve the state of the application at the 4 hour mark, I decided to create a new repo and finish the challenge. 
 
 ## Requirements
 
@@ -11,8 +13,8 @@ A Ruby application that calculates sales tax and generates receipts for shopping
 
 1. **Clone the repository:**
    ```bash
-   git clone git@github.com:mocha06/sales_tax_calculator.git
-   cd subscribe_assignment
+   git clone git@github.com:mocha06/sales_tax_calculator_v2.git
+   cd sales_tax_calculator_v2
    ```
 
 2. **Install RSpec (if not already installed):**
@@ -28,19 +30,21 @@ A Ruby application that calculates sales tax and generates receipts for shopping
 ## Project Structure
 
 ```
-subscribe_assignment/
+sales-tax-calculator/
 ├── lib/
 │   ├── item.rb                    # Item class - represents a single product
 │   ├── tax_calculator.rb          # Tax calculation logic
 │   ├── tax_exemption_checker.rb   # Determines tax-exempt items
 │   ├── receipt.rb                 # Receipt generation and formatting
-│   └── input_parser.rb            # Parses input strings into Item objects
+│   ├── input_parser.rb            # Parses input strings into Item objects
+│   └── main.rb                    # Main application entry point
 ├── spec/
 │   ├── item_spec.rb               # Tests for Item class
 │   ├── tax_calculator_spec.rb     # Tests for TaxCalculator
 │   ├── receipt_spec.rb            # Tests for Receipt class
 │   └── input_parser_spec.rb       # Tests for InputParser
 ├── .rspec                         # RSpec configuration
+├── challenge.md                   # Original challenge requirements
 └── README.md                      # This file
 ```
 
@@ -71,22 +75,29 @@ rspec spec/input_parser_spec.rb
 rspec --format documentation
 ```
 
-### Run tests with coverage (if using SimpleCov):
-```bash
-rspec --format documentation --color
-```
-
 ## Usage
-
-Unfortunately due to time constraints, the main application was not implemented. You can see the missing To-Dos [here](#todo)
 
 ### Command Line Interface
 
-The application it's finished state was meant to support CLI input for individual items:
+The application supports three modes:
 
-```bash
-ruby main.rb
-```
+- **Default (Challenge Examples):**
+  ```bash
+  ruby lib/main.rb
+  ```
+  This will print the receipts for the three challenge examples.
+
+- **Interactive Mode:**
+  ```bash
+  ruby lib/main.rb --interactive
+  ```
+  Enter items one at a time. Type `done` to finish and print the receipt.
+
+- **Bulk Mode:**
+  ```bash
+  ruby lib/main.rb --bulk
+  ```
+  Paste or type multiple items (one per line). Enter an empty line to finish and print the receipt.
 
 **Input Format:**
 ```
@@ -156,77 +167,30 @@ This project demonstrates:
 3 imported boxes of chocolates at 11.25
 ```
 
-## Development
-
-### Adding New Features
-1. Write tests
-2. Implement the feature
-3. Ensure all tests pass
-4. Refactor if needed
-
-### Code Style
-- Follow Ruby conventions
-- Use meaningful variable and method names
-- Add comments for complex business logic
-- Keep methods small and focused
-
-## Assumptions
-
-1. **Input Validation**: The application assumes valid input format
-2. **Currency**: All prices are in the same currency unit
-3. **Tax Rates**: Fixed rates as specified in business rules
-4. **Rounding**: Always rounds up to nearest 0.05
-
 ## TODO
+
+This isn't really what should go on a ReadMe, but since I'm probably not going to touch this project anymore, here are some footnotes of potential improvements and to-dos:
 
 ### Current TODOs in Code
 - **Receipt class**: Refactor to use `ReceiptCalculator` service for tax calculations
 - **Receipt class**: Refactor to use `ReceiptFormatter` service for output formatting
-- **InputParser**: Implement parsing logic for CLI input
-- **Main application**: Create CLI interface (`main.rb`)
+- **InputParser**: Implement parsing logic for CLI input (currently supports single and bulk line input)
+- **Main application**: Further modularize CLI logic if the app grows
 
 ### Implementation Status
 - ✅ **Item class** - Complete with tax exemption detection
 - ✅ **TaxCalculator** - Complete with proper rounding
 - ✅ **TaxExemptionChecker** - Complete with keyword matching
-- ✅ **Receipt class** - Basic implementation working, needs refactoring
-- ❌ **InputParser** - Started, but not completed
-- ❌ **CLI Interface** - Not yet implemented
-- ❌ **Main application** - Not yet implemented
+- ✅ **Receipt class** - Complete and working
+- ✅ **InputParser** - Complete for current requirements
+- ✅ **CLI Interface** - Complete for current requirements
+- ✅ **Main application** - Complete for current requirements
 
 ### Next Steps
-1. Implement `InputParser` class
-2. Create CLI interface in `main.rb`
-3. Test full application with challenge examples
-4. Refactor Receipt class to use separate services (if time permits)
-
-
-### Notes
-
-#### Time
-Total time for the project in it's current state was 4 hours
-start time:
-
-[start_time](extra/start%20time.jpeg)
-
-I first did 02h21m of work (calculation [here](https://www.calculator.net/time-duration-calculator.html?starthour=04&startmin=46&startsec=0&startunit=p&endhour=07&endmin=07&endsec=0&endunit=p&ctype=1&x=Calculate)). 
-
-first break can be seen in [this commit](https://github.com/mocha06/sales_tax_calculator/pull/4). As I mentioned in the comment, I stopped at 19:07, and restarted at 13:00 on the following day (jul 12, 2025)
-
-I stopped writing this README at around 15:25, totalling around 4 hours.
-
-
-#### AI Usage
-I limited my usage of AI to be writing help write the README, looking up some methods, and finish writing the tests in `spec/input_parser_spec.rb` (my time was running out so I just wanted to finish them before starting the readme). This is how I would normally operate and I wanted it to be as organic as possible, so on the reviewer's side: they'll get an idea of my work, and on my side: I get to code an interesting challenge. If I were to use AI to code this whole challenge, it'd probably take me less than 15 minutes to have a working prototype.
-
-I firmly believe that: without the usage of AI, this challenge is not possible to finish within 4 hours. I may be wrong, but I worked pretty fast and didn't make that many mistakes, and I still couldn't finish it.
-
-Of course I'd use more AI in day-to-day work, and of course I'd obviously move faster. But I believe that's not what this challenge was about (Again, I might be wrong).
-
-
-#### Final notes
-
-I'd like to finish this project, so I'll create a new repo with this project in it's current state, and will evolve it so that it's actually finished. I'll probably take around 3-4 more hours if I don't use AI.
-
-THANK YOU!
+1. Refactor Receipt class to use separate services (if needed)
+2. Add more robust input validation and error handling
+3. Add support for different tax rates or currencies
+4. Add file input/output capabilities
+5. Add a web interface or API
+6. Integrate with a database for item catalog
 
